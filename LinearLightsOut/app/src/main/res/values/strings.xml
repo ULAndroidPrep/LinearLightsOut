@@ -2,4 +2,9 @@
     <string name="app_name">LinearLightsOut</string>
     <string name="label_start">Make the buttons match</string>
     <string name="new_game">New Game</string>
+    <string name="win">You Win!</string>
+    <plurals name="game_state_turns">
+        <item quantity="one">You have taken %d turn.</item>
+        <item quantity="other">You have taken %d turns.</item>
+    </plurals>
 </resources>
