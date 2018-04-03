@@ -1,6 +1,5 @@
 package edu.rosehulman.fisher.linearlightsout;
 
-import android.app.Activity;
 import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,7 +11,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
 
   LightsOutGame mGame;
   private TextView mGameStateTextView;
@@ -56,18 +55,14 @@ public class MainActivity extends Activity {
     }
   }
 
-
   @Override
-  public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
-
-    // This is NOT working!  onSaveInstanceState is not being called!
-
+  protected void onSaveInstanceState(Bundle outState) {
+    super.onSaveInstanceState(outState);
     Log.d(Constants.TAG, "Saving " + mGame.toString());
     outState.putString(GAME_BUTTONS_KEY, mGame.toString());
     outState.putInt(NUM_TURNS_KEY, mGame.getNumPresses());
-    super.onSaveInstanceState(outState, outPersistentState);
   }
-
+  
   public void pressedButton(View view) {
     int tag = Integer.parseInt(view.getTag().toString());
     mGame.pressedButtonAtIndex(tag);
